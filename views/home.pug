@@ -1,0 +1,40 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title #{title}
+    link(rel="icon" type="image/png" sizes="32x32" href="./Img/favicon-32x32.png")
+    style
+      include ../public/CSS/Style.css
+    style 
+      include ../public/CSS/queries.css
+  body
+    .container
+      .location
+        .modelBox
+          p Choose Location
+          form.form(action="/" method="post")
+            label(for='input') City
+            br
+            input(type='text' name="location" class="input" required)
+            button.btn.formBtn(type='submit') Save Changes
+      .casting
+        .content
+          .details
+            p= weatherData.name 
+            p=`Clouds: ${weatherData.clouds.all} %`
+            p= `${weatherData.main.temp} °C`
+            img(src=`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`, alt='')
+          .nature
+            p= `Humidity:  ${weatherData.main.humidity} %`
+            p= `Feels like:  ${weatherData.main.feels_like} °C`
+            p= `Pressure:  ${weatherData.main.pressure} hPa`
+            p= `Wind:  ${weatherData.wind.speed} m/s`
+          button.btn.changeLocation Change Location
+    script
+      include ../public/JS/index.js 
+
+
+
