@@ -14,10 +14,13 @@ app.get("/", (req, res) => {
   https.get(url, (response) => {
     response.on("data", (chunk) => {
       const data = JSON.parse(chunk);
+      const cloudPercentage = data.clouds.all;
+      console.log(cloudPercentage);
 
       res.render("home", {
         title: "Get Weather Of Your City",
         weatherData: data,
+        percentage: cloudPercentage,
       });
     });
   });
@@ -34,6 +37,8 @@ app.post("/", (req, res) => {
       response.on("data", (chunk) => {
         const data = JSON.parse(chunk);
         const statusCode = data.cod;
+        const cloudPercentage = data.clouds.all;
+        console.log(cloudPercentage);
         if (statusCode != 200) {
           res.render("error", {
             title: "Get Weather Of Your City",
@@ -42,6 +47,7 @@ app.post("/", (req, res) => {
           res.render("home", {
             title: "Get Weather Of Your City",
             weatherData: data,
+            percentage: cloudPercentage,
           });
         }
       });
