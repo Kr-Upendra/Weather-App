@@ -34,6 +34,7 @@ app.post("/", (req, res) => {
       response.on("data", (chunk) => {
         const data = JSON.parse(chunk);
         const statusCode = data.cod;
+        console.log(data);
         if (statusCode != 200) {
           res.render("error", {
             title: "Get Weather Of Your City",
