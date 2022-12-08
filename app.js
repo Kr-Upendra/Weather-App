@@ -15,8 +15,6 @@ app.get("/", (req, res) => {
     response.on("data", (chunk) => {
       const data = JSON.parse(chunk);
       const cloudPercentage = data.clouds.all;
-      console.log(cloudPercentage);
-
       res.render("home", {
         title: "Get Weather Of Your City",
         weatherData: data,
@@ -38,7 +36,6 @@ app.post("/", (req, res) => {
         const data = JSON.parse(chunk);
         const statusCode = data.cod;
         const cloudPercentage = data.clouds.all;
-        console.log(cloudPercentage);
         if (statusCode != 200) {
           res.render("error", {
             title: "Get Weather Of Your City",
