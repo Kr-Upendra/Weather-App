@@ -24,7 +24,8 @@ html(lang='en')
         .content
           .details
             p= weatherData.name 
-            p= `Clouds: ${weatherData.clouds.all} %`
+            - var cloudPercentage = weatherData.clouds.all
+              p= `Clouds: ${cloudPercentage} %`
             p= `${weatherData.main.temp} °C`
             img(src=`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`, alt='')
           .nature
